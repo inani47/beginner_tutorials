@@ -20,7 +20,7 @@ cd ~/catkin_ws/
 catkin_make
 source devel/setup.bash
 cd src/
-git clone --recursive https://github.com/karanvivekbhargava/beginner_tutorials.git
+git clone --recursive https://github.com/inani47/beginner_tutorials.git
 cd ..
 catkin_make
 ```
@@ -29,15 +29,18 @@ catkin_make
 
 After following the build instructions:
 
-Run roscore from the terminal:
+Set environment vairables and run roscore in a new terminal:
 ```
+source devel/setup.bash
 roscore
 ```
-Run talker node from the terminal:
+Set environment variables and run talker node from a new terminal:
 ```
+source devel/setup.bash
 rosrun beginner_tutorials talker
 ```
-Run listener node from the terminal:
+Set environment variables and run listener node from a new terminal:
 ```
+source devel/setup.bash
 rosrun beginner_tutorials listener
 ```
