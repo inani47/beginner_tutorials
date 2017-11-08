@@ -1,11 +1,13 @@
 <launch>
   <arg name="pubRate" default="0" />
   <group ns="10hz" unless="$(arg pubRate)">
+    <node pkg="beginner_tutorials" type="stringEditorServer" name="stringEditorServer" launch-prefix="xterm -e"/>
     <node pkg="beginner_tutorials" type="talker" name="talker" launch-prefix="xterm -e" />
     <node pkg="beginner_tutorials" type="listener" name="listener" launch-prefix="xterm -e" />
   </group>
 
   <group ns="5hz" if="$(arg pubRate)">
+    <node pkg="beginner_tutorials" type="stringEditorServer" name="stringEditorServer" launch-prefix="xterm -e"/>
     <node pkg="beginner_tutorials" type="talker5hz" name="talker5hz" launch-prefix="xterm -e" />
     <node pkg="beginner_tutorials" type="listener" name="listener" launch-prefix="xterm -e" />
   </group>
