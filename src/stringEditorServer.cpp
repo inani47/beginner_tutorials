@@ -49,7 +49,7 @@
 bool editor(beginner_tutorials::stringEditor::Request &req,
             beginner_tutorials::stringEditor::Response &res) {
   res.output = "counting to 100: ";
-  ROS_DEBUG_STREAM("sending back response");
+  ROS_INFO_STREAM("sending back response");
   return true;
 }
 int main(int argc, char **argv) {
