@@ -87,6 +87,6 @@ In a new terminal:
 ```
 cd ~/catkin_ws/
 source devel/setup.bash
-rosservice call /editBaseString "input: '< any string >'" 
+rosservice call /editBaseString "input: '<any_string>'" 
 ```
 
