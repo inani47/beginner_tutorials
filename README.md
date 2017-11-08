@@ -1,4 +1,4 @@
-# ROS Beginner Tutorials - Services Logging and Launch Files 
+# ROS Tutorials - Services, Logging and Launch Files 
 
 
 ## Overview
