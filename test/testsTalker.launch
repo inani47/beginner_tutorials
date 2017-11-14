@@ -1,0 +1,6 @@
+<launch>
+    <node pkg="beginner_tutorials" type="stringEditorServer" name="stringEditorServer" launch-prefix="xterm -e"/>
+    <node pkg="beginner_tutorials" type="talker" name="talker" launch-prefix="xterm -e" />
+    <test pkg="beginner_tutorials" test-name="testsTalker" type="testsTalker" 
+/>
+</launch>
