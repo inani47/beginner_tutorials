@@ -36,11 +36,11 @@
  *  @author Pranav Inani
  *  @copyright 2017
  */
+#include <tf/transform_broadcaster.h>
 #include <sstream>
 #include "ros/ros.h"
 #include "std_msgs/String.h"
 #include "beginner_tutorials/stringEditor.h"
-#include <tf/transform_broadcaster.h>
 int main(int argc, char **argv) {
   ros::init(argc, argv, "talker5hz");
   ros::NodeHandle n;
@@ -59,12 +59,15 @@ int main(int argc, char **argv) {
   /**
    *  This loop receives a modified string from
    *  the string edittor service then it publishes
-   *  100 messages on topic chatter at 5 hz
+   *  100 messages on topic chatter at 5 hz.
+   *  It also broadcasts a constant transform from
+   *  the /world frame to the frame /talk
    */
   while (ros::ok()) {
-    transform.setOrigin( tf::Vector3(0, 2.0, 1.0) );
-    transform.setRotation( tf::Quaternion(0.5, 1, 1, 1) );
-    br.sendTransform(tf::StampedTransform(transform, ros::Time::now(), "world", "talk"));
+    transform.setOrigin(tf::Vector3(0, 2.0, 1.0));
+    transform.setRotation(tf::Quaternion(0.5, 1, 1, 1));
+    br.sendTransform(
+        tf::StampedTransform(transform, ros::Time::now(), "world", "talk"));
     ROS_DEBUG_STREAM_ONCE("ROS is OK");
     std_msgs::String msg;
     std::stringstream ss;
@@ -77,7 +80,7 @@ int main(int argc, char **argv) {
     } else if (count == 100) {
       ROS_FATAL_STREAM("100 messages printed" << std::endl << msg.data);
     } else {
-    ROS_INFO_STREAM(msg.data);
+      ROS_INFO_STREAM(msg.data);
     }
     chatter_pub.publish(msg);
     ros::spinOnce();

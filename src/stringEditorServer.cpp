@@ -31,7 +31,7 @@
  *  @brief Server for string editor service
  *
  *  This service modifies a given string
- *
+ *  to a constant output string
  *  @author Pranav Inani
  *  @copyright 2017
  */

@@ -1,8 +1,9 @@
-Done processing ./beginner_tutorials/src/listener.cpp
-Done processing ./beginner_tutorials/src/talker.cpp
-Done processing ./beginner_tutorials/src/talker5hz.cpp
-./beginner_tutorials/src/stringEditorServer.cpp:49:  Is this a non-const reference? If so, make const or use a pointer: beginner_tutorials::stringEditor::Request &req  [runtime/references] [2]
-./beginner_tutorials/src/stringEditorServer.cpp:50:  Is this a non-const reference? If so, make const or use a pointer: beginner_tutorials::stringEditor::Response &res  [runtime/references] [2]
-Done processing ./beginner_tutorials/src/stringEditorServer.cpp
+Done processing ./src/listener.cpp
+Done processing ./src/talker.cpp
+Done processing ./src/talker5hz.cpp
+./src/stringEditorServer.cpp:49:  Is this a non-const reference? If so, make const or use a pointer: beginner_tutorials::stringEditor::Request &req  [runtime/references] [2]
+./src/stringEditorServer.cpp:50:  Is this a non-const reference? If so, make const or use a pointer: beginner_tutorials::stringEditor::Response &res  [runtime/references] [2]
+Done processing ./src/stringEditorServer.cpp
+Done processing ./test/testsTalker.cpp
 Total errors found: 2
 
