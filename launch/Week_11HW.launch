@@ -13,7 +13,7 @@
     <node pkg="beginner_tutorials" type="listener" name="listener" launch-prefix="xterm -e" />
   </group>
   
-  <group if="$(arg rec)">
+  <group unless="$(arg rec)">
   <node pkg="rosbag" name="record" type="record" args="-a" launch-prefix="xterm -e" />
   </group>  
 </launch>
