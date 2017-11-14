@@ -149,7 +149,7 @@ rosrun beginner_tutorials listener
 ```
 Now from the results folder run the following command in the terminal:
 ```
-rosbag info recording.bag
+rosbag play recording.bag
 ```
 You will see that listener will start receiving messages being published on topic /chatter.
 
