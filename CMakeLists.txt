@@ -12,6 +12,7 @@ find_package(catkin REQUIRED COMPONENTS
   rospy
   std_msgs
   message_generation
+  tf
 )
 
 ## System dependencies are found with CMake's conventions
@@ -212,3 +213,10 @@ add_dependencies(stringEditorServer beginner_tutorials_generate_messages_cpp)
 add_executable(talker5hz src/talker5hz.cpp)
 target_link_libraries(talker5hz ${catkin_LIBRARIES})
 add_dependencies(talker5hz beginner_tutorials_generate_messages_cpp)
+
+if(CATKIN_ENABLE_TESTING)
+  find_package(rostest REQUIRED)
+  add_rostest_gtest(testsTalker test/testsTalker.launch test/testsTalker.cpp )
+  target_link_libraries(testsTalker ${catkin_LIBRARIES})
+endif()
+
