@@ -40,7 +40,7 @@
 #include "ros/ros.h"
 #include "std_msgs/String.h"
 #include "beginner_tutorials/stringEditor.h"
-
+#include <tf/transform_broadcaster.h>
 int main(int argc, char **argv) {
   ros::init(argc, argv, "talker5hz");
   ros::NodeHandle n;
@@ -49,9 +49,12 @@ int main(int argc, char **argv) {
   ros::Rate loop_rate(5);
   ros::ServiceClient client = n.serviceClient < beginner_tutorials::stringEditor
       > ("editBaseString");
+  ros::service::waitForService("editBaseString");
   beginner_tutorials::stringEditor str;
   str.request.input = "The count is: ";
   client.call(str);
+  tf::TransformBroadcaster br;
+  tf::Transform transform;
   int count = 0;
   /**
    *  This loop receives a modified string from
@@ -59,6 +62,9 @@ int main(int argc, char **argv) {
    *  100 messages on topic chatter at 5 hz
    */
   while (ros::ok()) {
+    transform.setOrigin( tf::Vector3(0, 2.0, 1.0) );
+    transform.setRotation( tf::Quaternion(0.5, 1, 1, 1) );
+    br.sendTransform(tf::StampedTransform(transform, ros::Time::now(), "world", "talk"));
     ROS_DEBUG_STREAM_ONCE("ROS is OK");
     std_msgs::String msg;
     std::stringstream ss;
@@ -70,7 +76,6 @@ int main(int argc, char **argv) {
       ROS_ERROR_STREAM(" 10 messages to go" << std::endl << msg.data);
     } else if (count == 100) {
       ROS_FATAL_STREAM("100 messages printed" << std::endl << msg.data);
-      break;
     } else {
     ROS_INFO_STREAM(msg.data);
     }
